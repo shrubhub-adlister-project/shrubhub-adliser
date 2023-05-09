@@ -2,6 +2,7 @@
     JSP TAGS [JavaServerPages]
     @: Directive, defining attributes
     V taglib: TAG LIBRARY
+    EXPORTS A COMPILED HTML PAGE
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,9 +12,17 @@
 
 <html>
 <head>
-    <title><%= "some title" %></title>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Home"/>
+    </jsp:include>
 </head>
 <body>
+<%--
+    Works with self-closing or sep-closing tag
+    Inserts HTML from another document like inserting an image into HTML
+ --%>
+    <jsp:include page="partials/navbar.jsp"/>
+
 <!-- This is an HTML comment you WILL see this in the HTML -->
 <%-- This is a JSP comment you WILL NOT see this in the HTML --%>
 
@@ -42,12 +51,16 @@
         </c:forEach>
     </ul>
 
+    <% request.setAttribute("five", 5); %>
     <c:choose>
-        <c:when test="true">
-            <p> Expression 1 is True </p>
+        <c:when test="${five < 3}">
+            <p> ${five} is less than 3 </p>
+        </c:when>
+        <c:when test="${five > 6}">
+            <p> ${five} is greater than 6 </p>
         </c:when>
         <c:otherwise>
-            <p> Expression 1 is False </p>
+            <p> Both Expressions are false </p>
         </c:otherwise>
     </c:choose>
 
