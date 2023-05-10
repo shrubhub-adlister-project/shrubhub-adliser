@@ -1,41 +1,35 @@
-<%@ page import="java.util.Objects" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%!
-    public static boolean isAdmin(String name, String pass) {
-        return Objects.equals(name, "admin") && Objects.equals(pass, "password");
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    if (request.getMethod().equalsIgnoreCase("post")) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (username.equals("admin") && password.equals("password")) {
+            response.sendRedirect("/profile");
+        }
     }
 %>
-
-<% String thing1 = request.getParameter("username"); %>
-<% String thing2 = request.getParameter("password"); %>
-
-<c:choose>
-    <c:when test= "<%=isAdmin(thing1, thing2)%>">
-        <%
-            String redirectURL = "profile.jsp";
-            response.sendRedirect(redirectURL);
-        %>
-    </c:when>
-</c:choose>
-
 <html>
 <head>
-    <title>User Login</title>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Please Log In" />
+    </jsp:include>
 </head>
 <body>
-
-<form method="post" action="/login.jsp">
-    <label for="username"> Username:
-        <input type="text" id="username" name="username">
-    </label>
-    <label for="password"> Password:
-        <input type="password" id="password" name="password">
-    </label>
-    <input type="submit" value="submit">
-</form>
-
-
+    <jsp:include page="partials/navbar.jsp" />
+    <div class="container">
+        <h1>Please Log In</h1>
+        <form action="/login.jsp" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" class="form-control" type="password">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+        </form>
+    </div>
 </body>
 </html>
