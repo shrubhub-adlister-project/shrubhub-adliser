@@ -25,8 +25,13 @@ public class PostServlet extends HttpServlet {
 //      Store post value into a string
         String post = req.getParameter("post");
         String title = req.getParameter("title");
+        String[] topics = req.getParameterValues("topic");
+
+        String fontSizeReq = req.getParameter("font-size");
+        req.setAttribute("font", fontSizeReq);
+
 //      Sets the post string to an attribute "post" when a post method is called
-        Post submittedpost = new Post(title, post);
+        Post submittedpost = new Post(title, post, topics);
         req.setAttribute("post", submittedpost);
         req.getRequestDispatcher("/blog/createPost.jsp").forward(req, resp);
     }
