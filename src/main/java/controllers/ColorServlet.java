@@ -14,6 +14,7 @@ public class ColorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.getRequestDispatcher("/forms/pickcolor.jsp").forward( req, resp );
+
     }
 
     @Override

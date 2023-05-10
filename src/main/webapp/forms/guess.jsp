@@ -11,7 +11,7 @@
 <h3>Guess a number between 1 and 3:</h3>
 <form action="guess" method="POST">
   <label for="input">
-    <input type="number" id="input" name="guess" min="1" max="3">
+    <input type="number" id="input" name="guess">
   </label>
 </form>
 

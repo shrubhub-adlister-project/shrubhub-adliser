@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Random;
 
 @WebServlet("/guess")
 public class GuessServlet extends HttpServlet {
@@ -19,9 +20,14 @@ public class GuessServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String userGuess = req.getParameter("guess");
+        Random random = new Random();
+        int randomNumber = random.nextInt(3) + 1;
 
-        if (userGuess.equals("2")) {
+        int userGuess = Integer.parseInt(req.getParameter("guess"));
+
+        if (userGuess < 1 || userGuess > 3) {
+            resp.sendRedirect("/guess");
+        } else if (userGuess == randomNumber) {
             resp.sendRedirect("/correct");
         } else {
             resp.sendRedirect("/incorrect");
