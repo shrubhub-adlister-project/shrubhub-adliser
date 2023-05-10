@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebServlet("/pizzaorder")
 public class PizzaServlet extends HttpServlet {
@@ -30,6 +31,15 @@ public class PizzaServlet extends HttpServlet {
         Pizza pizzaOrder = new Pizza( orderName, orderCrust, orderSauce, orderSize, orderToppings, orderAddress );
 
         req.setAttribute("order", pizzaOrder);
+
+        System.out.println(
+                pizzaOrder.getName() + ' ' +
+                pizzaOrder.getCrust() + ' ' +
+                pizzaOrder.getSauce() + ' ' +
+                pizzaOrder.getSize() + ' ' +
+                Arrays.toString(pizzaOrder.getToppings()) + ' ' +
+                pizzaOrder.getAddress()
+        );
 
         req.getRequestDispatcher("/forms/pizzaorder.jsp").forward( req, resp );
     }
