@@ -11,5 +11,13 @@
     <div class="container">
         <h1>Welcome to the Adlister!</h1>
     </div>
+
+<%--
+crust type
+sauce type
+size type (use select inputs)
+toppings (checkboxes)
+delivery address (text input)
+--%>
 </body>
 </html>
