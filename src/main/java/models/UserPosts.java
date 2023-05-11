@@ -6,6 +6,9 @@ import java.util.Random;
 
 public class UserPosts {
 
+//  Single point access anywhere in application
+    public static ArrayList<Post> allPosts = new ArrayList<>(Arrays.asList(generatePosts()));
+
     public static ArrayList<User> generateUsers(){
         User user1 = new User("johndoe", "johndoe@example.com", "password123");
         User user2 = new User("janedoe", "janedoe@example.com", "password456");
@@ -64,8 +67,6 @@ public class UserPosts {
 
         return users.get(randomIndex);
     }
-
-    ArrayList<Post> posts = new ArrayList<>(Arrays.asList(generatePosts()));
 
     public static Post[] generatePosts(){
         Post[] posts = {
