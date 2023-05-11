@@ -1,3 +1,5 @@
+package models;
+
 public class Ad {
     private long id;
     private long userId;
@@ -14,7 +16,6 @@ public class Ad {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -22,7 +23,6 @@ public class Ad {
     public long getUserId() {
         return userId;
     }
-
     public void setUserId(long userId) {
         this.userId = userId;
     }
@@ -30,7 +30,6 @@ public class Ad {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -38,7 +37,6 @@ public class Ad {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
