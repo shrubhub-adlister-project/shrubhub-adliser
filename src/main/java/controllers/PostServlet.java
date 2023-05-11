@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Post;
+import models.UserPosts;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,11 @@ public class PostServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Post[] posts = UserPosts.generatePosts();
+
+        req.setAttribute("posts", posts);
+
 //        Servlet forwards to "/login.jsp" the request and response objects
         req.getRequestDispatcher("/blog/createPost.jsp").forward(req, resp);
     }
@@ -23,16 +29,16 @@ public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 //      Store post value into a string
-        String post = req.getParameter("post");
+        String body = req.getParameter("body");
         String title = req.getParameter("title");
-        String[] topics = req.getParameterValues("topic");
+//        String[] topics = req.getParameterValues("topic");
 
-        String fontSizeReq = req.getParameter("font-size");
-        req.setAttribute("font", fontSizeReq);
+//        String fontSizeReq = req.getParameter("font-size");
+//        req.setAttribute("font", fontSizeReq);
 
 //      Sets the post string to an attribute "post" when a post method is called
-        Post submittedpost = new Post(title, post, topics);
-        req.setAttribute("post", submittedpost);
+        Post post = new Post(title, body);
+        req.setAttribute("post", post);
         req.getRequestDispatcher("/blog/createPost.jsp").forward(req, resp);
     }
 }
