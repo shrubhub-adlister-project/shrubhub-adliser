@@ -8,41 +8,39 @@ public class BeanTest {
     public static void main(String[] args) {
 
         String[] authorArray = {
-                "Maya Angelou",
-                "Ernest Hemingway",
-                "Virginia Woolf",
-                "Jane Austen",
-                "Mark Twain",
-                "Toni Morrison",
-                "Oscar Wilde",
-                "Margaret Atwood",
-                "F. Scott Fitzgerald",
-                "J.K. Rowling",
-                "Edgar Poe",
-                "Zora Hurston",
-                "James Baldwin",
-                "Gabriel Márquez",
-                "Charlotte Bronte",
-                "Haruki Murakami",
-                "Alice Walker",
-                "Albert Camus",
-                "David Wallace",
-                "Sylvia Plath"
+            "Maya Angelou",
+            "Ernest Hemingway",
+            "Virginia Woolf",
+            "Jane Austen",
+            "Mark Twain",
+            "Toni Morrison",
+            "Oscar Wilde",
+            "Margaret Atwood",
+            "F. Scott Fitzgerald",
+            "J.K. Rowling",
+            "Edgar Poe",
+            "Zora Hurston",
+            "James Baldwin",
+            "Gabriel Márquez",
+            "Charlotte Bronte",
+            "Haruki Murakami",
+            "Alice Walker",
+            "Albert Camus",
+            "David Wallace",
+            "Sylvia Plath"
         };
 
         String[] quotesArray = {
             "I've learned that people will forget what you said, people will forget what you did, but people will never forget " +
             "how you made them feel.",
             "The world breaks everyone, and afterward, some are strong at the broken places.",
-            "Lock up your libraries if you like; but there is no gate, no lock, no bolt that you can set upon the freedom of my " +
-                    "mind.",
+            "Lock up your libraries if you like; but there is no gate, no lock, no bolt that you can set upon the freedom of my mind.",
             "I have not the pleasure of understanding you.",
             "The man who does not read good books has no advantage over the man who cannot read them.",
             "If there's a book that you want to read, but it hasn't been written yet, then you must write it.",
             "Be yourself; everyone else is already taken.",
             "A word after a word after a word is power.",
-            "I hope you live a life you're proud of. If you find that you're not, I hope you have the strength to start all over " +
-                    "again.",
+            "I hope you live a life you're proud of. If you find that you're not, I hope you have the strength to start all over again.",
             "It is our choices, Harry, that show what we truly are, far more than our abilities.",
             "I became insane, with long intervals of horrible sanity.",
             "Research is formalized curiosity. It is poking and prying with a purpose.",
