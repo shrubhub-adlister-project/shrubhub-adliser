@@ -14,36 +14,20 @@
 
     <div class="container text-center">
         <div class="row">
-    <c:forEach var="ad" items="${ads}">
-        <div class="col-6">
-            <div class="card m-2">
-                <img src="https://placehold.co/300x200" class="card-img-top" alt="ad-${id}">
-                <div class="card-body">
-                    <h5 class="card-title">${ad.title}</h5>
-<%--                    <p class="card-text text-start h-50 overflow-scroll">${ad.description}</p>--%>
-                    <a href="#" class="btn btn-primary">Details</a>
+        <c:forEach var="ad" items="${ads}">
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card">
+                    <img src="https://placehold.co/300x200" class="card-img-top" alt="ad-${ad.id}">
+                    <div class="card-body overflow-y overflow-scroll">
+                        <h5 class="card-title text-capitalize">${ad.title}</h5>
+                        <p class="card-text text-start">${ad.description}</p>
+                        <a href="#" class="btn btn-primary">Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </c:forEach>
-    <div class="col-12">
-        <div class="card m-2 " aria-hidden="true">
-            <div class="card-body">
-                <h5 class="card-title placeholder-glow">
-                    <span class="placeholder col-6"></span>
-                </h5>
-                <p class="card-text placeholder-glow">
-                    <span class="placeholder col-7"></span>
-                    <span class="placeholder col-4"></span>
-                    <span class="placeholder col-4"></span>
-                    <span class="placeholder col-6"></span>
-                    <span class="placeholder col-8"></span>
-                </p>
-                <a class="btn btn-primary disabled placeholder col-6">Create an Ad</a>
-            </div>
+        </c:forEach>
         </div>
     </div>
-</div>
 
 </body>
 </html>

@@ -14,8 +14,10 @@ public class AdsIndexServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        if (session.getAttribute("user") == null) {
-            response.sendRedirect("/");
+        boolean isLoggedIn = session.getAttribute("user") != null;
+
+        if (!isLoggedIn) {
+            response.sendRedirect("/login");
         } else {
             request.getRequestDispatcher("/ads/index.jsp").forward(request, response);
         }

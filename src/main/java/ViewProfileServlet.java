@@ -10,13 +10,14 @@ import java.io.IOException;
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("user");
+        boolean isLoggedIn = session.getAttribute("user") != null;
 
-        if (session.getAttribute("user") == null) {
-            response.sendRedirect("/");
-        } else {
-            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+        if (!isLoggedIn) {
+            response.sendRedirect("/login");
+            return;
         }
+
+        request.getRequestDispatcher("/profile.jsp").forward(request, response);
     }
 
 }

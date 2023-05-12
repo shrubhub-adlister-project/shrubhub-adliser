@@ -13,11 +13,14 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("user") != null) {
+        boolean isLoggedIn = session.getAttribute("user") != null;
+
+        if (isLoggedIn) {
             session.invalidate();
             resp.sendRedirect("/login");
-        } else {
-            resp.sendRedirect("/");
+            return;
         }
+
+        resp.sendRedirect("/login");
     }
 }
