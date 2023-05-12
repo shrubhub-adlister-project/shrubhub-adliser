@@ -11,9 +11,13 @@ import java.util.List;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.getRequestDispatcher("/ads/index.jsp").forward(request, response);
+
         HttpSession session = request.getSession();
-        session.setAttribute("language", "en-us");
-        session.invalidate();
+
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("/");
+        } else {
+            request.getRequestDispatcher("/ads/index.jsp").forward(request, response);
+        }
     }
 }
