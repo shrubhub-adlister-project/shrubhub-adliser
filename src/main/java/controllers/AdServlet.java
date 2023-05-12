@@ -17,7 +17,7 @@ public class AdServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+//       V Access throguh the Interface, stored in data-type: Dat access object
         Ads ads = DaoFactory.getAdsDao();
         List<Ad> advertList = ads.all();
         req.setAttribute("advert", advertList);
