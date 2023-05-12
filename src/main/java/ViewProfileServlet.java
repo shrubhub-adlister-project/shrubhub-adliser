@@ -11,7 +11,6 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("user");
-        System.out.println(username + ": just logged in.");
 
         if (session.getAttribute("user") == null) {
             response.sendRedirect("/");

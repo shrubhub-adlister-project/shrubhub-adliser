@@ -5,7 +5,9 @@
             <a class="navbar-brand" href="/ads">Adlister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Login</a></li>
+
+            <li class="btn btn-primary"><a class="text-light link-underline link-underline-opacity-0" href="/login">
+                login</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

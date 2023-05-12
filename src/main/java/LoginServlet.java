@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", username);
             response.sendRedirect("/profile");
         } else {
-            response.sendRedirect("/");
+            response.sendRedirect("/login");
         }
     }
 }

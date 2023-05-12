@@ -6,10 +6,13 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="partials/navbar.jsp" />
+    <jsp:include page="partials/log-navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome to your profile, ${user}</h1>
+        <h1>Welcome to your profile</h1>
+        <h2 class="text-primary">${user}</h2>
+
+        <a href="/ads" class="btn btn-primary">See Ads</a>
     </div>
 
 </body>
