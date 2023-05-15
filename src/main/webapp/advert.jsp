@@ -7,15 +7,27 @@
 </head>
 <body>
 
-<c:forEach var="ad" items="${ads}">
+    <div class="container">
+        <h1>Here are all the ads!</h1>
 
-    <div class="card container">
-        <p>${ad.userId}: ${ad.id}</p>
-        <p>${ad.title}</p>
-        <p>${ad.description}</p>
+        <div class="container text-center">
+            <div class="row">
+
+                <c:forEach var="ad" items="${ads}">
+                    <div class="card m-2 p-0" style="width: 18rem;">
+                        <img src="https://placehold.co/150x100" class="card-img-top"
+                             alt="user${ad.userId}-ad${ad.id}">
+                        <div class="card-body">
+                            <h5 class="card-title">${ad.title}</h5>
+                            <p class="card-text">${ad.description}</p>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </c:forEach>
+
+            </div>
+        </div>
     </div>
-
-</c:forEach>
 
 </body>
 </html>
