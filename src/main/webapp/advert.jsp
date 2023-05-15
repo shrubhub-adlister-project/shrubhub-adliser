@@ -8,23 +8,24 @@
 <body>
 
     <div class="container">
-        <h1>Here are all the ads!</h1>
+        <h1 class="m-3">Here are all the ads!</h1>
+        <hr>
 
-        <div class="container text-center">
-            <div class="row">
-
+        <div class="container rounded border-bottom text-center bg-body-secondary" style="height: 80vh; overflow-y:
+        scroll;">
+            <div class="row justify-content-evenly">
                 <c:forEach var="ad" items="${ads}">
-                    <div class="card m-2 p-0" style="width: 18rem;">
-                        <img src="https://placehold.co/150x100" class="card-img-top"
-                             alt="user${ad.userId}-ad${ad.id}">
+                    <div class="col-lg-auto">
+                    <div class="card m-2" style="width: 18rem;">
+                        <img src="https://placehold.co/300x200" class="card-img-top" alt="user${ad.userId}-ad${ad.id}">
                         <div class="card-body">
-                            <h5 class="card-title">${ad.title}</h5>
-                            <p class="card-text">${ad.description}</p>
+                            <h5 class="card-title text-capitalize">${ad.title}</h5>
+                            <p class="card-text text-start">${ad.description}</p>
                             <a href="#" class="btn btn-primary">Details</a>
                         </div>
                     </div>
+                    </div>
                 </c:forEach>
-
             </div>
         </div>
     </div>
