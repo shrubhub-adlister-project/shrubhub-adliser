@@ -12,5 +12,4 @@ public class Config {
     public static String getPassword() {
         return "codeup";
     }
-
 }
