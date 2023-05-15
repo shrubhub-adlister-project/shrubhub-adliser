@@ -9,7 +9,11 @@
 <body>
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
+<<<<<<< HEAD
         <h1>Welcome to the AdLister!</h1>
+=======
+        <h1>Welcome to the Adlister! ${username}</h1>
+>>>>>>> sessions-and-cookies-exercise
     </div>
 
 <%--
@@ -20,4 +24,12 @@ toppings (checkboxes)
 delivery address (text input)
 --%>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+
+<%--
+TODO: start session, store needed data, invalidate
+--%>
+>>>>>>> sessions-and-cookies-exercise
