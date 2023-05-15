@@ -9,9 +9,9 @@ import java.util.List;
 
 public class AuthorsDao implements Authors {
 
-    private Connection cOnnection;
+    private Connection connection;
 
-//    each authordao instantiation sql connection else exception
+//  each authordao instantiation sql connection else exception
     public AuthorsDao() {
         try {
             DriverManager.registerDriver(new Driver());
@@ -27,7 +27,7 @@ public class AuthorsDao implements Authors {
 
     @Override
     public List<Author> all() {
-        List<Authors> authors = new ArrayList<>();
+        List<Author> authors = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM codeup_test_db.authors");

@@ -10,18 +10,17 @@ public class JDBCTest {
 
     public static List <String> getAuthorNames() {
         List<String> authorNames = new ArrayList<>();
-
         try {
-//        Establish Connnection
+//      Establish Connnection
             DriverManager.registerDriver(new Driver());
             Connection connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/codeup_test_db?allowPublicKeyRetrieval=true&useSSL=false",
                     "root",
                     "codeup"
             );
-//            Create Statement
+//      Create Statement
             Statement statement = connection.createStatement();
-//            Execute statement
+//      Execute statement
             ResultSet resultSet = statement.executeQuery("SELECT name FROM codeup_test_db.authors");
             while (resultSet.next()) {
                 authorNames.add(resultSet.getString("name"));
