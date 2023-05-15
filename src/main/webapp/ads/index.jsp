@@ -14,6 +14,7 @@
 
     <div class="container text-center">
         <div class="row">
+
         <c:forEach var="ad" items="${ads}">
             <div class="col-lg-4 d-flex align-items-stretch">
                 <div class="card">
@@ -26,8 +27,10 @@
                 </div>
             </div>
         </c:forEach>
+
         </div>
     </div>
 
+</div>
 </body>
 </html>
