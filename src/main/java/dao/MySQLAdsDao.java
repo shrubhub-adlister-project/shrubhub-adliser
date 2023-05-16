@@ -2,7 +2,6 @@ package dao;
 
 import com.mysql.cj.jdbc.Driver;
 import config.Config;
-import jdk.javadoc.internal.doclets.toolkit.util.Utils;
 import models.Ad;
 
 import java.sql.*;
@@ -51,7 +50,7 @@ public class MySQLAdsDao implements Ads {
     public Long insert(Ad ad) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO ads (user_id, title, description) VALUES (" + ad.getUserId() + ", '" + ad.getTitle() + ", " + ad.getDescription() + "')", Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate("INSERT INTO ads (user_id, title, description) VALUES (" + ad.getUserId() + ", '"+ ad.getTitle() + "' , '" + ad.getDescription() + "' );", Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = statement.getGeneratedKeys();
             if (rs.next()) {
                 rs.getLong(1);
