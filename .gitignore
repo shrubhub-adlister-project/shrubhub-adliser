@@ -1,4 +1,4 @@
 *.iml
 target/
-.idea/
+.idegita/
 /src/main/java/config/Config.java
