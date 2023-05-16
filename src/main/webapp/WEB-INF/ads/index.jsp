@@ -48,12 +48,16 @@ TODO:	c	This page should be available when a user visits /ads.
 =======
 <html>
 <head>
-    <jsp:include page="/partials/head.jsp">
-        <jsp:param name="title" value="Viewing All The Ads" />
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Viewing All The dao.Ads" />
     </jsp:include>
 </head>
 <body>
+<<<<<<< HEAD:src/main/webapp/ads/index.jsp
 <jsp:include page="/partials/log-navbar.jsp" />
+=======
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+>>>>>>> jdbc-lecture:src/main/webapp/WEB-INF/ads/index.jsp
 
 <div class="container">
     <h1><span class="mb-2 text-primary">${user}</span>, Here are all the ads!</h1>
@@ -79,5 +83,9 @@ TODO:	c	This page should be available when a user visits /ads.
 
 </div>
 </body>
+<<<<<<< HEAD:src/main/webapp/ads/index.jsp
 </html>
 >>>>>>> sessions-and-cookies-exercise
+=======
+</html>
+>>>>>>> jdbc-lecture:src/main/webapp/WEB-INF/ads/index.jsp

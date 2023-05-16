@@ -1,5 +1,10 @@
 package dao;
 
+//<<<<<<< HEAD
+//=======
+//import dao.Ads;
+//
+//>>>>>>> jdbc-lecture
 public class DaoFactory {
     private static ListAdsDao adsDao;
 

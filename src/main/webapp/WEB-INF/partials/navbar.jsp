@@ -7,6 +7,7 @@
             <a class="navbar-brand" href="/ads">AdLister</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD:src/main/webapp/partials/navbar.jsp
 <%--
     href="*/login" Authentication Servlet handles file nav, showing
     only /login in the url search rather than needing to hardcode the
@@ -28,6 +29,10 @@
             <li class="btn btn-primary"><a class="text-light link-underline link-underline-opacity-0" href="/login">
                 login</a></li>
 >>>>>>> sessions-and-cookies-exercise
+=======
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+>>>>>>> jdbc-lecture:src/main/webapp/WEB-INF/partials/navbar.jsp
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
