@@ -1,6 +1,12 @@
 package models;
 
+<<<<<<< HEAD
 public class Ad {
+=======
+import java.io.Serializable;
+
+public class Ad implements Serializable {
+>>>>>>> jdbc-exercise
     private long id;
     private long userId;
     private String title;

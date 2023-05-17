@@ -4,8 +4,13 @@
 
 <html>
 <head>
+<<<<<<< HEAD
     <jsp:include page="/partials/head.jsp">
         <jsp:param name="title" value="Welcome to my site!" />
+=======
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Viewing All The dao.Ads" />
+>>>>>>> jdbc-exercise
     </jsp:include>
 </head>
 <body>
@@ -36,6 +41,7 @@
     </div>
 
 </body>
+<<<<<<< HEAD
 </html>
 
 
@@ -89,3 +95,6 @@ TODO:	c	This page should be available when a user visits /ads.
 =======
 </html>
 >>>>>>> jdbc-lecture:src/main/webapp/WEB-INF/ads/index.jsp
+=======
+</html>
+>>>>>>> jdbc-exercise
