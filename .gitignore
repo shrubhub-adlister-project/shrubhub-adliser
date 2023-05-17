@@ -2,8 +2,12 @@
 target/
 <<<<<<< HEAD
 .idea/
+<<<<<<< HEAD
 /src/main/java/config/Config.java
 =======
 .idegita/
 /src/main/java/config/Config.java
 >>>>>>> jdbc-exercise
+=======
+Config.java
+>>>>>>> user-input-lecture
