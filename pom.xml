@@ -42,11 +42,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-<<<<<<< HEAD
             <version>8.0.32</version>
-=======
-            <version>8.0.31</version>
->>>>>>> user-input-lecture
         </dependency>
     </dependencies>
 
