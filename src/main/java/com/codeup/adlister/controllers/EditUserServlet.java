@@ -9,31 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLOutput;
 
-//@WebServlet("/editUser")
-//public class EditUserServlet extends HttpServlet {
-//
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (request.getSession().getAttribute("user") == null) {
-//            response.sendRedirect("/login");
-//            return;
-//        }
-//        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-//    }
-//
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
-////      Get User object from Sessions
-//        User currentUser = (User) request.getSession().getAttribute("user");
-//
-////        Run User method to supply deleteUser method
-//        long name = currentUser.getId();
-//
-////      Call the deleteUser method from UserDAO
-//        DaoFactory.getUsersDao().deleteUser(name);
-//
-////      Redirect to a success page or display a success message
-//        request.getSession().removeAttribute("user");
-//        request.getSession().invalidate();
-//        response.sendRedirect("/login");
-//    }
-//}
+@WebServlet("/editUser")
+public class EditUserServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
+        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+        User currentUser = (User) request.getSession().getAttribute("user");
+        long id = currentUser.getId();
+        int idInt = (int) id;
+
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+       User newUser =  DaoFactory.getUsersDao().editUser(username, email, password, idInt);
+
+        System.out.println(newUser.getUsername());
+
+        request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
+
+        response.sendRedirect("/profile");
+    }
+}
