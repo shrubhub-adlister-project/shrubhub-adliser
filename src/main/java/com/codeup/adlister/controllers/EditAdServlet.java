@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
-public class CreateAdServlet extends HttpServlet {
+@WebServlet(name = "controllers.EditAdServlet", urlPatterns = "/ads/edit")
+public class EditAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("user") == null) {
+        if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
-            // add a return statement to exit out of the entire method.
             return;
         }
-
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
-
+        Long adId = Long.valueOf(request.getParameter("adId"));
+        Ad ad = DaoFactory.getAdsDao().findAdById(adId);
+        request.setAttribute("ad", ad);
+        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

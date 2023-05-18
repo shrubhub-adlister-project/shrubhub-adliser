@@ -103,7 +103,3 @@ INSERT INTO ads (user_id, category_id, title, description) VALUES
     (3, 3, 'Succulent Mix', 'Assortment of small succulent plants.'),
     (8, 3, 'Azalea', 'Azalea shrub with vibrant blooms in various shades.'),
     (2, 2, 'Marigold', 'Cheerful marigold with bright orange and yellow flowers.');
-
-SELECT * FROM users;
-
-SELECT * FROM ads;
