@@ -14,6 +14,8 @@
 </head>
 <body>
 <div class="container">
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
     <h1>Edit Your Ad</h1>
     <form action="/ads/edit" method="post">
         <div class="form-group">
