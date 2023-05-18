@@ -15,11 +15,10 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
-            // Store the original ad page url in the session
-            String adPageUrl = request.getRequestURI();
-            request.getSession().setAttribute("adPageUrl", adPageUrl);
-            response.sendRedirect("/login");
+        String originalURL = request.getHeader("Referer");
+        request.getSession().setAttribute("originalURL", originalURL);
+        if (request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("/profile");
             return;
         }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -36,10 +35,11 @@ public class LoginServlet extends HttpServlet {
         }
 
         boolean validAttempt = Password.check(password, user.getPassword());
-
+//        String referer = request.getHeader("referer");
+        String originalURL = (String) request.getSession().getAttribute("originalURL");
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/profile");
+            response.sendRedirect(originalURL);
         } else {
             response.sendRedirect("/login");
         }

@@ -19,8 +19,8 @@ public class EditAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        String adId = request.getParameter("adId");
-        Ad ad = DaoFactory.getAdsDao().getAdById(adId);
+        Long adId = Long.valueOf(request.getParameter("adId"));
+        Ad ad = DaoFactory.getAdsDao().findAdById(adId);
         request.setAttribute("ad", ad);
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }

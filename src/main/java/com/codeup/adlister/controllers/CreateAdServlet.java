@@ -15,15 +15,14 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
-            // Store the original ad page url in the session
-            String adPageUrl = request.getRequestURI();
-            request.getSession().setAttribute("adPageUrl", adPageUrl);
+        if(request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
+            // add a return statement to exit out of the entire method.
             return;
         }
 
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -34,14 +33,6 @@ public class CreateAdServlet extends HttpServlet {
                 request.getParameter("description")
         );
         DaoFactory.getAdsDao().insert(ad);
-
-        // Retrieve the original ad page URL from the session
-        String adPageUrl = (String) request.getSession().getAttribute("adPageUrl");
-        if (adPageUrl != null) {
-            response.sendRedirect(adPageUrl);
-        } else {
-            response.sendRedirect("/ads");
-        }
+        response.sendRedirect("/ads");
     }
 }
-
