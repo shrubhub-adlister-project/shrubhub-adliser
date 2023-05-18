@@ -63,4 +63,22 @@ public class MySQLUsersDao implements Users {
         );
     }
 
+
+//  users-CRU[D]
+    @Override
+    public void deleteUser(String user) {
+        String deleteUserAds = "DELETE FROM ads WHERE user_id = ?;";
+        String deleteUserAcct = "DELETE FROM users WHERE username = ?;";
+        try {
+            PreparedStatement stmtAds = connection.prepareStatement(deleteUserAds);
+            stmtAds.setLong(1, findByUsername(user).getId());
+            stmtAds.executeUpdate();
+            PreparedStatement stmtAcct = connection.prepareStatement(deleteUserAcct);
+            stmtAcct.setString(1, user);
+            stmtAcct.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting a user", e);
+        }
+    }
+
 }
