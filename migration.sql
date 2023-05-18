@@ -83,4 +83,5 @@ INSERT INTO ads (user_id, title, description) VALUES
 
 SELECT * FROM users;
 
+
 SELECT * FROM ads;
