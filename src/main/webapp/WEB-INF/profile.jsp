@@ -36,8 +36,12 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
+<<<<<<< HEAD
         <h1>Welcome, ${sessionScope.user}!</h1>
 >>>>>>> jdbc-lecture:src/main/webapp/WEB-INF/profile.jsp
+=======
+        <h1>Welcome, ${sessionScope.user.username}!</h1>
+>>>>>>> finish-adlister
     </div>
 
 </body>
