@@ -9,6 +9,7 @@ public interface Ads {
     List<Ad> all();
     // insert a new ad and return the new ad's id
 
+
     Ad getAdById(String adId);
 
     Ad findAdById(long adId);
