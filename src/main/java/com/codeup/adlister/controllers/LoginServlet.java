@@ -15,8 +15,11 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("/profile");
+        if (request.getSession().getAttribute("user") == null) {
+            // Store the original ad page url in the session
+            String adPageUrl = request.getRequestURI();
+            request.getSession().setAttribute("adPageUrl", adPageUrl);
+            response.sendRedirect("/login");
             return;
         }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
