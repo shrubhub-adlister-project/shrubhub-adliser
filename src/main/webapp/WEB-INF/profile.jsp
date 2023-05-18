@@ -14,13 +14,13 @@
 
     <h1>Edit Profile</h1>
     <form action="/editUser" method="POST">
-        <label for="username">Username</label>
+        <label for="username">Username: </label>
         <input id="username" type="text" name="username" value="${user.username}">
 
-        <label for="email">Username</label>
+        <label for="email">Email: </label>
         <input id="email" type="text" name="email" value="${user.email}">
 
-        <label for="password">Username</label>
+        <label for="password">Password: </label>
         <input id="password" type="text" name="password" value="${user.password}">
 
         <input type="submit" value="edit">
