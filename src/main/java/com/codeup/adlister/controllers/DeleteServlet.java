@@ -34,7 +34,8 @@ public class DeleteServlet extends HttpServlet {
         DaoFactory.getUsersDao().deleteUser(name);
 
 //      Redirect to a success page or display a success message
+        request.getSession().removeAttribute("user");
+        request.getSession().invalidate();
         response.sendRedirect("/login");
-
     }
 }
