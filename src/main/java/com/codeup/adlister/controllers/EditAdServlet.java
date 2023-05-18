@@ -20,8 +20,7 @@ public class EditAdServlet extends HttpServlet {
             return;
         }
         String adId = request.getParameter("adId");
-        //get the add by the id
-        Ad ad = DaoFactory.getAdsDao().findAdById(Long.parseLong(adId));
+        Ad ad = DaoFactory.getAdsDao().getAdById(adId);
         request.setAttribute("ad", ad);
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
