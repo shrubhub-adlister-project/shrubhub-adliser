@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -39,6 +40,11 @@ public class LoginServlet extends HttpServlet {
         String originalURL = (String) request.getSession().getAttribute("originalURL");
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
+            if (Objects.equals(originalURL, "/register")) {
+                response.sendRedirect("/profile");
+                return;
+            }
+
             response.sendRedirect(originalURL);
         } else {
             response.sendRedirect("/login");

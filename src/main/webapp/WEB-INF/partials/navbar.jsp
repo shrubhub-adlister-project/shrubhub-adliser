@@ -11,9 +11,17 @@
             <c:if test="${empty user}">
                 <li><a href="/login">Login</a></li>
             </c:if>
+            <c:if test="${empty user}">
+                <li><a href="/register">Register</a></li>
+            </c:if>
+
             <c:if test="${not empty user}">
                 <li><a href="/logout">Logout</a></li>
             </c:if>
+            <c:if test="${not empty user}">
+                <li><a href="/profile">Profile</a></li>
+            </c:if>
+
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
