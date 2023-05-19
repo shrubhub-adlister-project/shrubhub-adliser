@@ -2,6 +2,9 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,10 @@ public class ListAdsDao implements Ads {
     public Ad editAd(String title, long category, String description, long adId) {
         return null;
     }
+
+    @Override
+    public void deleteAd(long adId) {}
+
 
     @Override
     public Ad editAd(String title, String category, String description, long adId) {
