@@ -21,7 +21,7 @@
         <input id="email" type="text" name="email" value="${user.email}">
 
         <label for="password">Password: </label>
-        <input id="password" type="text" name="password" value="${user.password}">
+        <input id="password" type="password" name="password" value="${user.password}">
 
         <input type="submit" value="edit">
     </form>

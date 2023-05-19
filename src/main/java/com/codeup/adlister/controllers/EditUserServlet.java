@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +39,6 @@ public class EditUserServlet extends HttpServlet {
 //      Check user input for null or empty values, BEFORE updating in database
         User editUser = checkEditInput(currentUser, username, email, password);
 
-        System.out.println("editUser = " + editUser.getUsername() + editUser.getEmail() + editUser.getPassword());
-
 //      Executes the MySQL query to update the user's information
         DaoFactory.getUsersDao().editUser(editUser.getUsername(), editUser.getEmail(), editUser.getPassword(), idInt);
 
@@ -64,7 +63,8 @@ public class EditUserServlet extends HttpServlet {
         }
 
         if (password != null && !password.isEmpty()) {
-            user.setPassword(password);
+            String hash = Password.hash(password);
+            user.setPassword(hash);
         } else {
             user.setPassword(user.getPassword());
         }
