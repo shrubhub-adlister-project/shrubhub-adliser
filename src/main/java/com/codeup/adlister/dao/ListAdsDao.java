@@ -88,4 +88,10 @@ public class ListAdsDao implements Ads {
         ));
         return ads;
     }
+
+    @Override
+    public List<Ad> findAdByCategory(int categoryId) {
+        return null;
+
+    }
 }

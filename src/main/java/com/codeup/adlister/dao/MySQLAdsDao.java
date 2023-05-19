@@ -147,6 +147,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
+
     public List<Ad> findAdByCategory(int categoryId) {
         String query = "SELECT * FROM ads WHERE category_id = ?;";
         try{
@@ -159,6 +160,3 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException(e);
         }
     }
-
-
-}

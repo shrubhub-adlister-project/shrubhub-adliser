@@ -19,12 +19,13 @@ public interface Ads {
 
     Long insert(Ad Ad);
 
-    //gettitle
-
-
     Ad editAd(String title, long category, String description, long adId);
 
 
     void deleteAd(long adId);
+}
+
+    List<Ad> findAdByCategory(int categoryId);
+
 }
 
