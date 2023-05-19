@@ -75,6 +75,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
     @Override
 //  View user adds on profile page
     public List<Ad> findAdByUser(int userId) {
@@ -89,6 +90,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException(e);
         }
     }
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
