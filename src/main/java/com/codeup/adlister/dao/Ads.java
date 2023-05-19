@@ -14,6 +14,8 @@ public interface Ads {
 
     Ad findAdById(long adId);
 
+    List<Ad> findAdByUser(int id);
+
     Long insert(Ad Ad);
 
 }
