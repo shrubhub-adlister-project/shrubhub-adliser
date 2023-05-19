@@ -39,13 +39,32 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public Ad editAd(String title, String category, String description, long adId) {
+        String query = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?;";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, title);
+            stmt.setString(2, category);
+            stmt.setString(3, description);
+            stmt.setLong(4, adId);
+            stmt.executeUpdate();
+//            ResultSet rs = stmt.getGeneratedKeys();
+//            rs.next();
+            return findAdById(adId);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error editing ad", e);
+        }
+    }
+
+    @Override
     public Long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(user_id, category_id, title, description) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getDescription());
+            stmt.setLong(2, ad.getCategoryId());
+            stmt.setString(3, ad.getTitle());
+            stmt.setString(4, ad.getDescription());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -54,6 +73,12 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+    @Override
+    public Ad editAd(String title, long category, String description, long adId) {
+        return null;
+    }
+
     public  Ad getAdById(String adId){
         return null;
     }
@@ -73,14 +98,33 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+<<<<<<< HEAD
+=======
+
+    @Override
+//  View user adds on profile page
+    public List<Ad> findAdByUser(int userId) {
+        String query = "SELECT * FROM ads WHERE user_id = ?;";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            System.out.println(userId);
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+>>>>>>> 8282d0738c7f0171caf5370560e78b60275e47c4
 
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user_id"),
+            rs.getLong("category_id"),
             rs.getString("title"),
             rs.getString("description")
         );
@@ -93,4 +137,17 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
-}
+
+
+    public List<Ad> findAdByCategory(int categoryId) {
+        String query = "SELECT * FROM ads WHERE category_id = ?;";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            System.out.println(categoryId);
+            stmt.setInt(1, categoryId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }

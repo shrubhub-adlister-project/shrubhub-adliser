@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,10 +22,22 @@
         <input id="email" type="text" name="email" value="${user.email}">
 
         <label for="password">Password: </label>
-        <input id="password" type="text" name="password" value="${user.password}">
+        <input id="password" type="password" name="password" value="${user.password}">
 
         <input type="submit" value="edit">
     </form>
+
+    <div class="column">
+    <h1>User Ads</h1>
+        <c:forEach var="ad" items="${userAds}">
+            <div class="col-md-6">
+                <h2>${ad.title}</h2>
+                <p>${ad.description}</p>
+                <a id="${ad.id}" class="btn btn-primary btn-block"
+                   role="button" href="/edit?id=${ad.id}" style="width: 100px">Edit</a>
+            </div>
+        </c:forEach>
+    </div>
 
     <h1>Delete Profile</h1>
     <form action="/deleteUser" method="POST">
