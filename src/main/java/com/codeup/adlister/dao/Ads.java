@@ -16,4 +16,4 @@ public interface Ads {
 
     Long insert(Ad Ad);
 
-}
+}o
