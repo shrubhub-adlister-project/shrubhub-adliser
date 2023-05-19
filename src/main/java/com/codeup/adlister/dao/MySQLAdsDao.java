@@ -73,13 +73,12 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    @Override
-    public Ad findAdById(long id) {
-        return null;
-    }
+//    @Override
+//    public Ad findAdById(long id) {
+//        return null;
+//    }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
