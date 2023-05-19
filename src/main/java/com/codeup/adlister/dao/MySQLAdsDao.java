@@ -54,6 +54,12 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+    @Override
+    public Ad editAd(String title, String category, String description, long adId) {
+        return null;
+    }
+
     public  Ad getAdById(String adId){
         return null;
     }

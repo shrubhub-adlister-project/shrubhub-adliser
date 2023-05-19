@@ -14,25 +14,42 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.EditAdServlet", urlPatterns = "/ads/edit")
 public class EditAdServlet extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
         }
-        Long adId = Long.valueOf(request.getParameter("adId"));
-        Ad ad = DaoFactory.getAdsDao().findAdById(adId);
-        request.setAttribute("ad", ad);
+//        Long adId = Long.valueOf(request.getParameter("adId"));
+//        Ad ad = DaoFactory.getAdsDao().findAdById(adId);
+//        request.setAttribute("ad", ad);
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User loggedInUser = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                loggedInUser.getId(),
-                request.getParameter("title"),
-                request.getParameter("description")
-        );
-        DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
+        User currentUser = (User) request.getSession().getAttribute("user");
+        long adId = Long.parseLong(request.getParameter("adId"));
+//        int idInt = (int) id;
+
+        String title = request.getParameter("title");
+        String category = request.getParameter("category");
+        String description = request.getParameter("description");
+
+        Ad newAd =  DaoFactory.getAdsDao().editAd(title, category, description, adId);
+
+        System.out.println(newAd.getTitle());
+
+        request.getSession().setAttribute("user", DaoFactory.getAdsDao().findAdById(adId));
+
+        response.sendRedirect("/profile");
     }
+//        User loggedInUser = (User) request.getSession().getAttribute("user");
+//        Ad ad = new Ad(
+//                loggedInUser.getId(),
+//                request.getParameter("title"),
+//                request.getParameter("description")
+//        );
+//        DaoFactory.getAdsDao().insert(ad);
+//        response.sendRedirect("/ads");
+//    }
 }

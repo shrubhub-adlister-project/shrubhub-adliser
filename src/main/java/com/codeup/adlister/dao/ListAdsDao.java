@@ -30,6 +30,11 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
+    public Ad editAd(String title, String category, String description, long adId) {
+        return null;
+    }
+
+    @Override
 
     public Ad getAdById(String adId) {
         return null;

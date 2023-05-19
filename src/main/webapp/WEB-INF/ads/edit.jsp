@@ -28,7 +28,7 @@
         </div>
         <input type="submit" class="btn btn-block btn-primary">
         <div class="row">
-            <a class="btn btn-primary" href="/ads/deleteAd">Delete Ad</a>
+            <a id="deleteAdButton" class="btn btn-primary" href="/ads/deleteAd">Delete Ad</a>
         </div>
     </form>
 </div>

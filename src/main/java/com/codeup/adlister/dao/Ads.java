@@ -16,4 +16,5 @@ public interface Ads {
 
     Long insert(Ad Ad);
 
+    Ad editAd(String title, String category, String description, long adId);
 }
