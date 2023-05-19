@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static java.lang.Long.parseLong;
+
 @WebServlet(name = "controllers.EditAdServlet", urlPatterns = "/ads/edit")
 public class EditAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,9 +28,12 @@ public class EditAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        long categoryId = parseLong(request.getParameter("categories"));
+
         User loggedInUser = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(
                 loggedInUser.getId(),
+                categoryId,
                 request.getParameter("title"),
                 request.getParameter("description")
         );

@@ -23,6 +23,15 @@
             <input id="title" name="title" class="form-control" type="text">
         </div>
         <div class="form-group">
+            <label for="categories">Description</label>
+            <select name="categories" id="categories">
+                <option value="1">Mushrooms</option>
+                <option value="2">Flowers</option>
+                <option value="3">Plants</option>
+                <option value="4">Services</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="description">Description</label>
             <textarea id="description" name="description" class="form-control" type="text"></textarea>
         </div>
