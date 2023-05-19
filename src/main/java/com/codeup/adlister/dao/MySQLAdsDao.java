@@ -106,4 +106,19 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    // Sorting ads by category id
+    public List<Ad> findAdByCategory(int categoryId) {
+        String query = "SELECT * FROM ads WHERE category_id = ?;";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query);
+            System.out.println(categoryId);
+            stmt.setInt(1, categoryId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

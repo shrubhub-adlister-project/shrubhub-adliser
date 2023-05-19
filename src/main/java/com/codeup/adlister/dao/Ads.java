@@ -18,4 +18,6 @@ public interface Ads {
 
     Long insert(Ad Ad);
 
+    List<Ad> findAdByCategory(int categoryId);
+
 }
