@@ -15,22 +15,45 @@ import java.io.IOException;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("/profile");
+            return;
+        }
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+    String username = (String) request.getSession().getAttribute("username");
+        String email = (String) request.getSession().getAttribute("email");
+        if(username != null){
+            request.setAttribute("username", username);
+        }
+        if(email != null){
+            request.setAttribute("email", email);
+        }
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
+        request.getSession().setAttribute("username",username);
+
         String email = request.getParameter("email");
+        request.getSession().setAttribute("email", email);
+
         String password = request.getParameter("password");
+        request.getSession().setAttribute("password", password);
+
+
         String passwordConfirmation = request.getParameter("confirm_password");
+        request.getSession().setAttribute("confirm_password", passwordConfirmation);
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+                || email.isEmpty()
+                || password.isEmpty()
+                || (! password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
+            request.setAttribute("username", username);
+            request.setAttribute("email", email);
             response.sendRedirect("/register");
             return;
         }
@@ -39,11 +62,8 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, email, password);
 
         // hash the password
-
         String hash = Password.hash(user.getPassword());
-
         user.setPassword(hash);
-
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
     }
