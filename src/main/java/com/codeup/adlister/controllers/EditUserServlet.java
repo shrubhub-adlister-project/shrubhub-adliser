@@ -23,20 +23,52 @@ public class EditUserServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+//      Get current user from sessions
         User currentUser = (User) request.getSession().getAttribute("user");
+
+//      Convert id to int for MySQL data congruency
         long id = currentUser.getId();
         int idInt = (int) id;
 
+//      Grab user input from form [unless changed by user, keep current value from session(mySQL)]
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-       User newUser =  DaoFactory.getUsersDao().editUser(username, email, password, idInt);
+//      Check user input for null or empty values, BEFORE updating in database
+        User editUser = checkEditInput(currentUser, username, email, password);
 
-        System.out.println(newUser.getUsername());
+        System.out.println("editUser = " + editUser.getUsername() + editUser.getEmail() + editUser.getPassword());
 
+//      Executes the MySQL query to update the user's information
+        DaoFactory.getUsersDao().editUser(editUser.getUsername(), editUser.getEmail(), editUser.getPassword(), idInt);
+
+//      Finds and Sets the current user's information in the session
         request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
 
         response.sendRedirect("/profile");
+    }
+
+//  Checks user input for null or empty values, BEFORE updating in database
+    public static User checkEditInput (User user, String username, String email, String password) {
+        if (username != null && !username.isEmpty()) {
+            user.setUsername(username);
+        } else {
+            user.setUsername(user.getUsername());
+        }
+
+        if (email != null && !email.isEmpty()) {
+            user.setEmail(email);
+        } else {
+            user.setEmail(user.getEmail());
+        }
+
+        if (password != null && !password.isEmpty()) {
+            user.setPassword(password);
+        } else {
+            user.setPassword(user.getPassword());
+        }
+
+        return user;
     }
 }
