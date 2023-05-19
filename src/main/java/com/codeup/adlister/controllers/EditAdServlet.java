@@ -28,6 +28,7 @@ public class EditAdServlet extends HttpServlet {
 
 
 
+
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
