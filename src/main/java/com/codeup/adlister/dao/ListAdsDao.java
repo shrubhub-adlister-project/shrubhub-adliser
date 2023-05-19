@@ -30,6 +30,7 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
+
     public Ad getAdById(String adId) {
         return null;
     }
@@ -37,6 +38,7 @@ public class ListAdsDao implements Ads {
        return null;
 
     }
+
 
 
     private List<Ad> generateAds() {
