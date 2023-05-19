@@ -39,6 +39,24 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public Ad editAd(String title, String category, String description, long adId) {
+        String query = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?;";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, title);
+            stmt.setString(2, category);
+            stmt.setString(3, description);
+            stmt.setLong(4, adId);
+            stmt.executeUpdate();
+//            ResultSet rs = stmt.getGeneratedKeys();
+//            rs.next();
+            return findAdById(adId);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error editing ad", e);
+        }
+    }
+
+    @Override
     public Long insert(Ad ad) {
         try {
             String insertQuery = "INSERT INTO ads(user_id, category_id, title, description) VALUES (?, ?, ?, ?)";
@@ -55,6 +73,12 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+    @Override
+    public Ad editAd(String title, long category, String description, long adId) {
+        return null;
+    }
+
     public  Ad getAdById(String adId){
         return null;
     }
@@ -111,7 +135,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-    // Sorting ads by category id
+
     public List<Ad> findAdByCategory(int categoryId) {
         String query = "SELECT * FROM ads WHERE category_id = ?;";
         try{
@@ -124,5 +148,3 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException(e);
         }
     }
-
-}

@@ -34,7 +34,7 @@
                 <h2>${ad.title}</h2>
                 <p>${ad.description}</p>
                 <a id="${ad.id}" class="btn btn-primary btn-block"
-                   role="button" href="/ad?id=${ad.id}" style="width: 100px">View</a>
+                   role="button" href="/edit?id=${ad.id}" style="width: 100px">Edit</a>
             </div>
         </c:forEach>
     </div>
