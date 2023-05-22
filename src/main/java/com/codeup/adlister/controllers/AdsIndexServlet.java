@@ -13,7 +13,7 @@ import java.io.IOException;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String categoryString = request.getParameter("category");
-        if(categoryString == null){
+        if(categoryString == null || categoryString == "5"){
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
         } else {
             int category = Integer.parseInt(categoryString);
