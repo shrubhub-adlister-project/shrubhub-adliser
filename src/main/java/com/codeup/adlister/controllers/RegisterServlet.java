@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
 
 
         if (!password.equals(passwordConfirmation)) {
-            response.sendRedirect("/register?error=Enter%20password%20to%%20confirm.");
+            response.sendRedirect("/register?error=Passwords%20do%20not%20match.");
             return;
         } else if (DaoFactory.getUsersDao().findByUsername(username) != null) {
             response.sendRedirect("/register?error=User%20already%20exists.");
