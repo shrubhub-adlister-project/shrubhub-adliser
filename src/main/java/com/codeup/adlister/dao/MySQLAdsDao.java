@@ -39,12 +39,12 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Ad editAd(String title, String category, String description, long adId) {
-        String query = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?;";
+    public Ad editAd(String title, long category, String description, long adId) {
+        String query = "UPDATE ads SET title = ?, category_id = ?, description = ? WHERE id = ?;";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, title);
-            stmt.setString(2, category);
+            stmt.setLong(2, category);
             stmt.setString(3, description);
             stmt.setLong(4, adId);
             stmt.executeUpdate();
@@ -72,11 +72,6 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
-    }
-
-    @Override
-    public Ad editAd(String title, long category, String description, long adId) {
-        return null;
     }
 
     @Override
