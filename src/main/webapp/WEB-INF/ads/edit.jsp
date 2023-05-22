@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <h1>Edit Your Ad</h1>
-    <form action="/ads/edit" method="POST">
+    <form action="/edit?id=${ad.id}" method="POST">
         <div class="form-group">
             <label for="title">Title</label>
             <input id="title" name="title" class="form-control" type="text" value="${ad.title}">

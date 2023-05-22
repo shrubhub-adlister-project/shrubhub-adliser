@@ -8,8 +8,7 @@ public interface Ads {
     // get a list of all the ads
     List<Ad> all();
     // insert a new ad and return the new ad's id
-
-    Ad editAd(String title, String category, String description, long adId);
+    Ad editAd(String title, long category, String description, long adId);
 
     Ad getAdById(String adId);
 
@@ -19,14 +18,10 @@ public interface Ads {
 
     Long insert(Ad Ad);
 
-    Ad editAd(String title, long category, String description, long adId);
-
     void deleteAd(long adId);
-}
 
     List<Ad> findAdByCategory(int categoryId);
 
     List<Ad> searchAdByTitle(String title);
 
 }
-

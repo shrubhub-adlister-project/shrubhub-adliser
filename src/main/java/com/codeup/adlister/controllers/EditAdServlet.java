@@ -27,8 +27,6 @@ public class EditAdServlet extends HttpServlet {
         request.setAttribute("ad", oldAd);
 
 
-
-
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
@@ -44,9 +42,11 @@ public class EditAdServlet extends HttpServlet {
 
 //      Convert id to int for MySQL data congruency
 //        long id = currentUser.getId();
-        Ad oldAd = (Ad) request.getAttribute("userAds");
-
+//        Ad oldAd = (Ad) request.getAttribute("ad");
         long adId = Long.parseLong(request.getParameter("id"));
+        Ad oldAd = DaoFactory.getAdsDao().findAdById(adId);
+
+//        long adId = Long.parseLong(request.getParameter("id"));
 
         String title = request.getParameter("title");
         long category = parseLong(request.getParameter("categories"));
@@ -104,4 +104,3 @@ public class EditAdServlet extends HttpServlet {
 //        response.sendRedirect("/profile");
 //    }
 //}
-
