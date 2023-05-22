@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.rmi.ServerException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -44,6 +45,10 @@ public class RegisterServlet extends HttpServlet {
 
         String passwordConfirmation = request.getParameter("confirm_password");
         request.getSession().setAttribute("confirm_password", passwordConfirmation);
+
+        if (! password.equals(passwordConfirmation)) {
+            throw new ServerException("Passwords do not match");
+        }
 
         // validate input
         boolean inputHasErrors = username.isEmpty()

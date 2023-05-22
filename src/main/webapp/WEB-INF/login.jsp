@@ -14,7 +14,6 @@
         <h1>Please Log In</h1>
 
         <form action="/login" method="POST">
-<%--            <p>${requestScope["javax.servlet.error.message"]}</p>--%>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text" required>
@@ -26,24 +25,6 @@
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
     </div>
-
-<%--<script>--%>
-
-<%--    let loginButton = document.querySelector("input[type='submit']");--%>
-
-<%--    loginButton.addEventListener("click", function(event) {--%>
-<%--        event.preventDefault();--%>
-<%--        let username = document.querySelector("#username").value;--%>
-<%--        let password = document.querySelector("#password").value;--%>
-
-<%--        if (username == null) {--%>
-<%--            alert("Please enter a username");--%>
-<%--        } else if (password == null) {--%>
-<%--            alert("Please enter a password");--%>
-<%--        }--%>
-<%--    });--%>
-
-<%--</script>--%>
 
 </body>
 </html>
