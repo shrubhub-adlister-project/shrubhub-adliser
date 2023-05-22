@@ -16,13 +16,18 @@ import java.rmi.ServerException;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setAttribute("error", request.getParameter("error"));
+
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
         }
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
-    String username = (String) request.getSession().getAttribute("username");
+
+        String username = (String) request.getSession().getAttribute("username");
         String email = (String) request.getSession().getAttribute("email");
+
         if(username != null){
             request.setAttribute("username", username);
         }
@@ -33,10 +38,10 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
+        String username = request.getParameter("username").trim();
         request.getSession().setAttribute("username",username);
 
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").trim();
         request.getSession().setAttribute("email", email);
 
         String password = request.getParameter("password");
@@ -46,15 +51,20 @@ public class RegisterServlet extends HttpServlet {
         String passwordConfirmation = request.getParameter("confirm_password");
         request.getSession().setAttribute("confirm_password", passwordConfirmation);
 
-        if (! password.equals(passwordConfirmation)) {
-            throw new ServerException("Passwords do not match");
+
+        if (!password.equals(passwordConfirmation)) {
+            response.sendRedirect("/register?error=Enter%20password%20to%%20confirm.");
+            return;
+        } else if (DaoFactory.getUsersDao().findByUsername(username) != null) {
+            response.sendRedirect("/register?error=User%20already%20exists.");
+            return;
         }
 
         // validate input
         boolean inputHasErrors = username.isEmpty()
                 || email.isEmpty()
                 || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
+                || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
             request.setAttribute("username", username);

@@ -16,6 +16,8 @@ import java.sql.SQLOutput;
 public class EditUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("error", request.getParameter("error"));
+
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
@@ -32,9 +34,17 @@ public class EditUserServlet extends HttpServlet {
         int idInt = (int) id;
 
 //      Grab user input from form [unless changed by user, keep current value from session(mySQL)]
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
+        String username = request.getParameter("username").trim();
+        String email = request.getParameter("email").trim();
         String password = request.getParameter("password");
+
+        if (username == null || username.isEmpty()) {
+            response.sendRedirect("/editUser?error=Enter%20a%20username.");
+            return;
+        } else if (password == null || password.isEmpty()) {
+            response.sendRedirect("/editUser?error=Enter%20a%20password.");
+            return;
+        }
 
 //      Check user input for null or empty values, BEFORE updating in database
         User editUser = checkEditInput(currentUser, username, email, password);

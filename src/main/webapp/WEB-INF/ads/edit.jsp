@@ -20,7 +20,7 @@
     <form action="/edit?id=${ad.id}" method="POST">
         <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" value="${ad.title}">
+            <input id="title" name="title" class="form-control" type="text" value="${ad.title}" required>
         </div>
         <div class="form-group">
             <label for="categories">Category</label>
@@ -33,7 +33,8 @@
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"> ${ad.description}</textarea>
+            <textarea id="description" name="description" class="form-control" type="text" required>
+                ${ad.description}</textarea>
         </div>
         <input type="submit" class="btn btn-block btn-primary">
         <div class="row">

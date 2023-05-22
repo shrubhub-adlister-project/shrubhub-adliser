@@ -14,6 +14,9 @@
     </div>
 
     <h1>Edit Profile</h1>
+    <c:if test="${error != null}" >
+        <p style="color: red;"> ${error}</p>
+    </c:if>
     <form action="/editUser" method="POST">
         <label for="username">Username: </label>
         <input id="username" type="text" name="username" value="${user.username}">
@@ -22,7 +25,7 @@
         <input id="email" type="text" name="email" value="${user.email}">
 
         <label for="password">Password: </label>
-        <input id="password" type="password" name="password" value="${user.password}">
+        <input id="password" type="password" name="password">
 
         <input type="submit" value="edit">
     </form>
