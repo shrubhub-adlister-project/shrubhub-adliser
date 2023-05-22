@@ -18,6 +18,9 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String originalURL = request.getHeader("Referer");
         request.getSession().setAttribute("originalURL", originalURL);
+
+        request.setAttribute("error", request.getParameter("error"));
+
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -31,7 +34,8 @@ public class LoginServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         if (user == null) {
-            throw new ServletException("User does not exist");
+            response.sendRedirect("/login?error=User%20does%20not%20exist.");
+            return;
         }
 
         boolean validAttempt = Password.check(password, user.getPassword());

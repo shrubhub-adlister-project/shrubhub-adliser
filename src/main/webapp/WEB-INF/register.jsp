@@ -9,6 +9,9 @@
 <jsp:include page="partials/navbar.jsp" />
 <div class="container">
     <h1>Please fill in your information.</h1>
+    <c:if test="${error != null}" >
+        <p style="color: red;"> ${error}</p>
+    </c:if>
     <form action="/register" method="post">
         <div class="form-group">
             <label for="username">Username</label>

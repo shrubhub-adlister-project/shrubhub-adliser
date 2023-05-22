@@ -12,7 +12,9 @@
 
     <div class="container">
         <h1>Please Log In</h1>
-
+        <c:if test="${error != null}" >
+            <p style="color: red;"> ${error}</p>
+        </c:if>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
