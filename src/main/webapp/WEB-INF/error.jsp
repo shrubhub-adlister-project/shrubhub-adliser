@@ -9,12 +9,7 @@
 
 <h1> Ooops! </h1>
 
-<%--<h2> ${requestScope["javax.servlet.error.message"]} </h2>--%>
-
-<%--<h1>Opps...</h1>--%>
-<%--<p>Sorry, an error occurred.</p>--%>
-<%--<p>Here is the exception stack trace: </p>--%>
-<%--<pre><% exception.printStackTrace(response.getWriter()); %></pre>--%>
+<h2> ${requestScope["javax.servlet.error.message"]} </h2>
 
 </body>
 </html>
