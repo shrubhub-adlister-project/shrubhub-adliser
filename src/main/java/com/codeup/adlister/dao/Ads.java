@@ -21,8 +21,8 @@ public interface Ads {
 
     Ad editAd(String title, long category, String description, long adId);
 
-
-
+    void deleteAd(long adId);
+}
 
     List<Ad> findAdByCategory(int categoryId);
 

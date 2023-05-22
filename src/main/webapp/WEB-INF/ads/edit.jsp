@@ -37,17 +37,22 @@
         </div>
         <input type="submit" class="btn btn-block btn-primary">
         <div class="row">
-            <a id="deleteAdButton" class="btn btn-primary" href="/ads/deleteAd">Delete Ad</a>
+            <a id="${ad.id}" class="deleteButton"
+               role="button" href="/deleteAd?id=${ad.id}">Delete</a>
         </div>
     </form>
 </div>
 
 <script>
-    document.getElementById('deleteAdButton').addEventListener('click', function(event) {
-        if (!confirm('Are you sure you want to delete this ad?')) {
-            event.preventDefault();
-        }
-    });
+    var deleteButtons = document.getElementsByClassName('deleteAdButton');
+    for (var i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', function(event) {
+            if (!confirm('Are you sure you want to delete this ad?')) {
+                event.preventDefault();
+            }
+        });
+    }
 </script>
+
 </body>
 </html>
