@@ -40,8 +40,8 @@
                 </div>
                 <input type="submit" class="ad-card-btn btn btn-block btn-primary">
                 <div class="row">
-                    <a id="${ad.id}" class="deleteButton ad-card-btn"
-                       role="button" href="/deleteAd?id=${ad.id}">Delete</a>
+                    <a id="${ad.id}" class="deleteAdButton ad-card-btn" role="button" href="/deleteAd?id=${ad.id}">Delete</a>
+
                 </div>
             </div>
         </div>
@@ -50,8 +50,8 @@
 </div>
 
 <script>
-    var deleteButtons = document.getElementsByClassName('deleteAdButton');
-    for (var i = 0; i < deleteButtons.length; i++) {
+    let deleteButtons = document.getElementsByClassName('deleteAdButton');
+    for (let i = 0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener('click', function(event) {
             if (!confirm('Are you sure you want to delete this ad?')) {
                 event.preventDefault();
@@ -59,6 +59,5 @@
         });
     }
 </script>
-
 </body>
 </html>

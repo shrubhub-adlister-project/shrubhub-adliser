@@ -2,10 +2,6 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +44,6 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(3, description);
             stmt.setLong(4, adId);
             stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
             return findAdById(adId);
         } catch (SQLException e) {
             throw new RuntimeException("Error editing ad", e);

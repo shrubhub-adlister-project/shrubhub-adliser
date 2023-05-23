@@ -1,11 +1,7 @@
 package com.codeup.adlister.controllers;
 
-import com.codeup.adlister.dao.Ads;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.User;
-import com.codeup.adlister.util.Password;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,22 +27,15 @@ public class EditAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-//        Long adId = Long.valueOf(request.getParameter("adId"));
-//        Ad ad = DaoFactory.getAdsDao().findAdById(adId);
-//        request.setAttribute("ad", ad);
+
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        User currentUser = (User) request.getSession().getAttribute("user");
 
-//      Convert id to int for MySQL data congruency
-//        long id = currentUser.getId();
-//        Ad oldAd = (Ad) request.getAttribute("ad");
         long adId = Long.parseLong(request.getParameter("id"));
         Ad oldAd = DaoFactory.getAdsDao().findAdById(adId);
 
-//        long adId = Long.parseLong(request.getParameter("id"));
 
         String title = request.getParameter("title");
         long category = parseLong(request.getParameter("categories"));
@@ -87,20 +76,3 @@ public class EditAdServlet extends HttpServlet {
         return ad;
     }
 }
-//        User currentUser = (User) request.getSession().getAttribute("user");
-//        long adId = Long.parseLong(request.getParameter("adId"));
-//
-//        String title = request.getParameter("title");
-//        long categoryId = parseLong(request.getParameter("categories"));
-//        String description = request.getParameter("description");
-//        User loggedInUser = (User) request.getSession().getAttribute("user");
-//        Ad ad = new Ad(
-//                loggedInUser.getId(),
-//                categoryId,
-//                title,
-//                description
-//        );
-//
-//        response.sendRedirect("/profile");
-//    }
-//}
