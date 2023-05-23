@@ -7,8 +7,33 @@
     </jsp:include>
 </head>
 <body>
+
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <div class="container">
+    <div class="loader-body">
+        <div class="pm-container">
+            <div class="mouth">
+                <div class="one"></div>
+                <div class="two"></div>
+            </div>
+            <div class="food">
+                <div class="mushroom-wrapper">
+                    <img src="img/download.png" alt="mushroom icon">
+                </div>
+                <div class="mushroom-wrapper">
+                    <img src="img/download.png" alt="mushroom icon">
+                </div>
+                <div class="mushroom-wrapper">
+                    <img src="img/download.png" alt="mushroom icon">
+                </div>
+                <div class="mushroom-wrapper">
+                    <img src="img/download.png" alt="mushroom icon">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container welcome">
         <h1>Welcome to the Adlister!</h1>
     </div>
 </body>

@@ -19,15 +19,20 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-<h1>Search Result:</h1>
-<br>
 
-<c:if test="${results != null}">
-    <c:forEach var="ad" items="${results}">
-        <h2>${ad.title}</h2>
-        <h4>${ad.description}</h4>
-    </c:forEach>
-</c:if>
-
+<div class="container ad-container">
+    <div class=" ads-wrapper">
+        <div class="ad-card users-ad col-md-6">
+            <c:if test="${results != null}">
+                <c:forEach var="ad" items="${results}">
+                    <h2 class="title">${ad.title}</h2>
+                    <div class="ad-content-wrapper">
+                        <h4 class="ad-content">${ad.description}</h4>
+                    </div>
+                </c:forEach>
+            </c:if>
+        </div>
+    </div>
+</div>
 </body>
 </html>

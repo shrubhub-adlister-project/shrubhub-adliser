@@ -10,17 +10,15 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-<div class="container">
-    <h2>HELLO</h2>
-<%--    <c:choose>--%>
-<%--        <c:when test="btn">--%>
-        <div class="col-md-6">
-
-            <h1>Here is ${ad.title}</h1>
+<div class="container ad-container">
+    <div class="users-ads ads-wrapper">
+        <div class="ad-card users-ad col-md-6">
+            <h1 class="title">Here is ${ad.title}</h1>
             <p>${ad.description}</p>
-<%--            </c:when>--%>
-<%--//        </c:choose>--%>
+        </div>
     </div>
+
+
 </div>
 
 
