@@ -142,32 +142,47 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-
+    // This method will return a list of ads based on the category id
     public List<Ad> findAdByCategory(int categoryId) {
+        // SQL query to select ads with a specific category id
         String query = "SELECT * FROM ads WHERE category_id = ?;";
         try {
+            // Prepare the SQL statement
             PreparedStatement stmt = connection.prepareStatement(query);
+            // Print the categoryId for debugging purposes
             System.out.println(categoryId);
+            // Set the value of the categoryId parameter in the SQL statement
             stmt.setInt(1, categoryId);
+            // Execute the SQL statement and retrieve the result set
             ResultSet rs = stmt.executeQuery();
+            // Create and return a list of Ad objects from the result set
             return createAdsFromResults(rs);
         } catch (SQLException e) {
+            // Throw a runtime exception if an SQL error occurs
             throw new RuntimeException(e);
         }
     }
 
 
-    // Search ads by title
+    // This method will return a list of ads based on the title of the ad
     public List<Ad> searchAdByTitle(String title) {
+        // SQL query to select ads that match the provided title using the LIKE operator
         String query = "SELECT * FROM ads WHERE title LIKE ?;";
         try{
+            // Create a prepared statement for executing the SQL query
             PreparedStatement stmt = connection.prepareStatement(query);
+            // Print the title for debugging purposes
             System.out.println(title);
+            // Set the parameter in the prepared statement to search for ads with titles containing the provided title (using % as wildcard)
             stmt.setString(1, "%" + title + "%");
+            // Execute the query and get the result set
             ResultSet rs = stmt.executeQuery();
+            // Create and return a list of ads based on the result set
             return createAdsFromResults(rs);
         } catch (SQLException e) {
+            // Throw a runtime exception if an SQL exception occurs
             throw new RuntimeException(e);
         }
     }
+
 }

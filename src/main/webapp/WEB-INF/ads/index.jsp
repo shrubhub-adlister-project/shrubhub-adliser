@@ -17,10 +17,7 @@
 
     <%--here is the sorting dropdown for the categories that are set in my categories table and also kake sure they equal their id number value--%>
     <div class="cat dropdown">
-
-
         <div class="cat-filter">Filter By: </div>
-
         <div class=" dropdown-menu">
             <a class="dropdown-item" href="/ads">All</a>
             <a class="dropdown-item" href="/ads?category=1">Mushrooms</a>
@@ -28,6 +25,7 @@
             <a class="dropdown-item" href="/ads?category=3">Plants</a>
             <a class="dropdown-item" href="/ads?category=4">Services</a>
         </div>
+<%--        here is the search bar that will search for the title of the ad--%>
         <div class="search-wrapper">
             <form class="search" action="/search" method="post">
                 <input class="input" type="text" name="search" placeholder="Search">
