@@ -1,0 +1,417 @@
+body{
+    margin: 0;
+    padding: 0;
+    background:  #faead7;
+    font-family: 'Inconsolata', monospace;
+}
+.container{
+    position: absolute;
+    top: 100px;
+}
+/*navbar styling*/
+.logo{
+    height: 100%;
+    width: 1000px;
+}
+.navbar .container-fluid {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 35px;
+    border-bottom: 3px solid #74855e;
+    background: #a1b588;
+    box-shadow: 0px 0px 7px 1px #596647;
+    position: fixed;
+    z-index: 1;
+    height: 90px;
+    width: -webkit-fill-available;
+}
+.container-fluid{
+    text-align: center;
+}
+.navbar-header{
+    padding: 35px;
+    margin: 17px;
+}
+.navbar-brand{
+    justify-content: start;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    font-weight: bolder;
+    color: #331f17;
+    text-decoration: none;
+}
+.nav-opt{
+    text-decoration: unset;
+    font-size: 25px;
+    color: #331f17;
+}
+.nb-li{
+    padding: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: end;
+}
+.navbar-right{
+    display:flex;
+    justify-content: space-between;
+    align-content:end;
+}
+
+.welcome{
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    position: absolute;
+    top: 200px;
+    left: 690px;
+    display: flex;
+
+}
+/*below is the pac man eating mushrooms tehehehe*/
+
+
+.loader-container{
+    position: relative;
+    background: #faead7;
+}
+
+.pm-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.mouth{
+    float:left;
+}
+.one{
+    border: 30px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    position: relative;
+    top: -30px;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid transparent;
+    transform: rotate(-45deg);
+    animation: moveone 0.66s infinite;
+}
+.two{
+    transform: rotate(45deg);
+    border: 30px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    top: -90px;
+    position: relative;
+    border-top: 30px solid transparent;
+    border-left: 30px solid transparent;
+    animation: movetwo 0.66s infinite;
+}
+.food{
+    float: left;
+}
+img{
+    max-height: 65px;
+}
+.mushroom-wrapper {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: -35px;
+    left: 200px;
+    animation: movefood 2s cubic-bezier(0.41, 0.35, 1, 1) infinite ;
+}
+@keyframes moveone{
+    0%, 100%{
+        transform: rotate(-45deg);
+    }
+    45%{
+        transform: rotate(-90deg);
+    }
+}
+@keyframes movetwo{
+    0%, 100%{
+        transform: rotate(45deg);
+    }
+    45%{
+        transform: rotate(90deg);
+    }
+}
+@keyframes movefood{
+    0%{
+        left: 200px;
+    }
+    100%{
+        left: 0;
+    }
+}
+.food div:nth-child(1){
+    animation-delay: 0s;
+
+}
+.food div:nth-child(2){
+    animation-delay: 0.66s;
+}
+.food div:nth-child(3){
+    animation-delay: 1.33s;
+
+}
+.food div:nth-child(4){
+    animation-delay: 2s;
+}
+/*all of the ads page*/
+.adlisting-container{
+    position: absolute;
+    top: 100px;
+    max-width: 100vw;
+}
+.adlisting-header {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: #331f17;
+}
+.ads-wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 30px;
+    overflow: scroll;
+    max-height: 70vh;
+}
+.ad-card{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 12px;
+    border: 5px solid #00640066;
+    padding: 10px;
+    border-radius: 15px;
+    background: antiquewhite;
+    box-shadow: 0px 0px 7px 1px #596647;
+
+}
+
+.ad-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: inherit;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+}
+.ad-card-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #74855e;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px 88px;
+    align-self: center;
+    text-decoration: unset;
+    color: #331f16;
+    font-size: 20px;
+    font-weight: bold;
+    background: #a1b588;
+}
+.title{
+    align-self: center;
+    text-align: center;
+    border-bottom: 3px solid #74855e;
+}
+/*create ad option*/
+.create-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    padding: 12px;
+    border: 5px solid #74855e;
+    border-radius: 50px;
+    max-width: max-content;
+    background: #a1b588;
+    align-self: center;
+}
+.create{
+    text-decoration: unset;
+    font-size: 35px;
+    color: #331f17;
+}
+/*categories options*/
+.cat{
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    font-size: 25px;
+    margin: 50px 50px 3px;
+    align-items: center;
+    background: #faead7;
+    border: 10px solid #a1b588;
+    padding: 10px;
+    text-decoration: unset;
+    justify-content: start;
+    gap: 10px;
+
+    box-shadow: 0px 0px 7px 1px #596647;
+}
+.search-btn{
+    max-width: 45px;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    padding: unset;
+    margin: unset;
+}
+
+.dropdown-item{
+
+    text-decoration: unset;
+    color: #331f17;
+    padding: 5px;
+    border-bottom: 5px solid #74855e;
+}
+.cat-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: flex-start;
+    border: unset;
+    background: unset;
+    font-size: 40px;
+    color: #331f17;
+    font-weight: bolder;
+}
+.dropdown-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: end;
+    gap: 10px;
+}
+/*profile page below*/
+.welcome-user{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+}
+.users-ads{
+    display: flex;
+    /* grid-template-columns: repeat(4, 1fr); */
+    overflow: scroll;
+    max-width: 1589px;
+    padding: 10px;
+    /* direction: rtl; */
+    max-height: 300px;
+}
+.users-ad{
+    min-width: 350px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 10px;
+    border: 5px solid #00640066;
+    padding: 22px;
+    border-radius: 15px;
+    background: antiquewhite;
+    box-shadow: 0px 0px 7px 1px #596647;
+    min-height: 200px;
+
+}
+.profile-container{
+    min-width: 100vw;
+}
+.users-ads-wrapper{
+    max-height: 415px;
+    overflow: scroll;
+    direction: ltr;
+    max-width:1700px;
+    margin: 30px;
+}
+.input{
+    background: #faead7;
+    margin: 3px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid #74855e;
+}
+/*bellow is the login page*/
+.login-container{
+    left: 35%;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+.form-group-wrapper{
+    display:flex;
+    flex-direction: column;
+}
+.login-btn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-left:85px;
+    margin-top:35px;
+}
+/*below is the register page*/
+.reg-container{
+    left:20%;
+}
+.label{
+    display: flex;
+    justify-content: start;
+    align-self: start;
+}
+.reg-form-group-wrapper{
+    justify-content: space-between;
+    align-items: center;
+}
+.reg-fg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*below is the edit ad page*/
+.edit-opt{
+    width: 600px;
+}
+.edit-container{
+    left:30%;
+}
+/*below is the single ad page */
+.ad-container{
+    left: 35%;
+}
+/*below is the create ad page*/
+.create-opt{
+    width: 600px;
+
+}
+.create-container{
+    left: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

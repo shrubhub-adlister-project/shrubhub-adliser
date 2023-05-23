@@ -13,34 +13,39 @@
     </jsp:include>
 </head>
 <body>
-<div class="container">
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<div class="container edit-container">
 
-    <h1>Edit Your Ad</h1>
-    <form action="/edit?id=${ad.id}" method="POST">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" value="${ad.title}" required>
+
+    <form action="/edit?id=${ad.id}" method="POST" class="form edit-forminput ">
+        <div class="form-group-wrapper edit-form-group-wrapper">
+            <h1>Edit Your Ad</h1>
+            <div class="form-group-wrapper">
+                <div class="form-group edit-fg">
+                    <label class="label edit-label" for="title">Title</label>
+                    <input id="title" name="title" class="edit-opt input form-control" type="text" value="${ad.title}" required>
+                </div>
+                <div class="form-group edit-fg">
+                    <label class="label edit-label " for="categories">Category</label>
+                    <select class="input edit-opt" name="categories" id="categories" value="${ad.categoryId}" required>
+                        <option class="input" value="1">Mushrooms</option>
+                        <option class="input" value="2">Flowers</option>
+                        <option class="input" value="3">Plants</option>
+                        <option class="input" value="4">Services</option>
+                    </select>
+                </div>
+                <div class="form-group edit-fg">
+                    <label class="label edit-label" for="description">Description</label>
+                    <textarea id="description" name="description" class="form-control input edit-opt" type="text" required> ${ad.description}</textarea>
+                </div>
+                <input type="submit" class="ad-card-btn btn btn-block btn-primary">
+                <div class="row">
+                    <a id="${ad.id}" class="deleteButton ad-card-btn"
+                       role="button" href="/deleteAd?id=${ad.id}">Delete</a>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="categories">Category</label>
-            <select name="categories" id="categories" value="${ad.categoryId}">
-                <option value="1">Mushrooms</option>
-                <option value="2">Flowers</option>
-                <option value="3">Plants</option>
-                <option value="4">Services</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text" required>
-                ${ad.description}</textarea>
-        </div>
-        <input type="submit" class="btn btn-block btn-primary">
-        <div class="row">
-            <a id="${ad.id}" class="deleteButton"
-               role="button" href="/deleteAd?id=${ad.id}">Delete</a>
-        </div>
+
     </form>
 </div>
 

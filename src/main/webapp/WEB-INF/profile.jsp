@@ -7,47 +7,52 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container">
+<div class="container profile-container">
+    <div class="welcome-user">
         <h1>Welcome, ${user.username}!</h1>
     </div>
 
-    <h1>Edit Profile</h1>
     <c:if test="${error != null}" >
         <p style="color: red;"> ${error}</p>
     </c:if>
-    <form action="/editUser" method="POST">
-        <label for="username">Username: </label>
-        <input id="username" type="text" name="username" value="${user.username}">
 
-        <label for="email">Email: </label>
-        <input id="email" type="text" name="email" value="${user.email}">
+    <form class="cat" action="/editUser" method="POST">
+        <h1>Edit Profile</h1>
+        <label for="username" class="dropdown-item">Username: </label>
+        <input class="input" id="username" type="text" name="username" value="${user.username}">
 
-        <label for="password">Password: </label>
-        <input id="password" type="password" name="password">
+        <label for="email" class="dropdown-item">Email: </label>
+        <input class="input" id="email" type="text" name="email" value="${user.email}">
 
-        <input type="submit" value="edit">
+        <label for="password" class="dropdown-item">Password: </label>
+        <input class="input" id="password" type="password" name="password">
+
+        <input class="ad-card-btn" type="submit" value="edit">
     </form>
 
-    <div class="column">
-    <h1>User Ads</h1>
-        <c:forEach var="ad" items="${userAds}">
-            <div class="col-md-6">
-                <h2>${ad.title}</h2>
-                <p>${ad.description}</p>
-                <a id="${ad.id}" class="btn btn-primary btn-block"
-                   role="button" href="/edit?id=${ad.id}" style="width: 100px">Edit</a>
-                <a id="${ad.id}" class="deleteButton"
-                   role="button" href="/deleteAd?id=${ad.id}" style="width: 100px">Delete</a>
-            </div>
-        </c:forEach>
+    <div class="users-ads-wrapper">
+        <h1 class="title">${user.username}'s Ads</h1>
+        <div class="column users-ads ads-wrapper">
+
+            <c:forEach var="ad" items="${userAds}">
+                <div class="ad-card col-md-6 users-ad">
+                    <h2 class="title">${ad.title}</h2>
+                    <p >${ad.description}</p>
+                    <a id="${ad.id}" class="ad-card-btn btn btn-primary btn-block"
+                       role="button" href="/edit?id=${ad.id}" style="width: 100px">Edit</a>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 
-    <h1>Delete Profile</h1>
-    <form action="/deleteUser" method="POST">
-        <input type="submit" value="Delete">
-    </form>
 
+    <form class="cat" action="/deleteUser" method="POST">
+
+        <h1>Delete Profile</h1>
+        <input class="ad-card-btn" type="submit" value="Delete">
+    </form>
+</div>
 </body>
 </html>
